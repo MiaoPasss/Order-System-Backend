@@ -1,17 +1,22 @@
 <template>
   <MenuLogo></MenuLogo>
   <el-menu
+    :collapse = "collapse"
     router
     background-color="#304156"
     :default-active="activeIndex"
     class="el-menu-vertical-demo"
   >
+    <el-menu-item index="/dashboard">
+      <el-icon><HomeFilled /></el-icon>
+      <template #title>首页</template>
+    </el-menu-item>
     <el-menu-item index="/user">
-      <el-icon><Menu /></el-icon>
+      <el-icon><User /></el-icon>
       <template #title>用户管理</template>
     </el-menu-item>
     <el-menu-item index="/category">
-      <el-icon><Menu /></el-icon>
+      <el-icon><Dish /></el-icon>
       <template #title>菜品分类</template>
     </el-menu-item>
     <el-menu-item index="/goods">
@@ -34,10 +39,18 @@
 </template>
 
 <script setup lang="ts">
+import { collapseStore } from '@/store/collapse';
 import {useRoute} from 'vue-router'
 import MenuLogo from './MenuLogo.vue';
-import { Menu, Memo, Monitor, Calendar, Edit } from '@element-plus/icons-vue';
+import { Memo, Monitor, Calendar, Edit, Dish, HomeFilled, User } from '@element-plus/icons-vue';
 import { computed } from 'vue';
+
+// get store
+const store = collapseStore()
+// set menu status
+const collapse = computed(() => {
+  return store.collpase
+})
 
 // 当前路由
 const route = useRoute()

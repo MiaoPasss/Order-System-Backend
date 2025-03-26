@@ -4,7 +4,9 @@
         <Menu></Menu>
       </el-aside>
       <el-container>
-        <el-header class="header">Header</el-header>
+        <el-header class="header">
+          <Header></Header>
+        </el-header>
         <el-main class="main">
           <router-view></router-view>
         </el-main>
@@ -14,6 +16,7 @@
 
 <script setup lang="ts">
 import Menu from './Menu.vue'
+import Header from './header/Header.vue';
 </script>
 
 <style lang="scss" scoped>
@@ -23,6 +26,10 @@ import Menu from './Menu.vue'
         background-color: #304156;
     }
     .header {
+      display: flex;
+      align-items: center;
+      border-bottom: 1px solid #d8dce5 !important;
+      justify-content: space-between;
     }
     .main {
     }
